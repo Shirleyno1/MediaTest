@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
@@ -20,6 +22,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled true
+    }
 }
 
 dependencies {
@@ -27,7 +32,6 @@ dependencies {
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
     implementation "com.android.support.constraint:constraint-layout:$constrainLayoutVersion"
-    testImplementation "junit:junit:$junitVersion"
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
@@ -55,6 +59,30 @@ dependencies {
     //image
     implementation "com.squareup.picasso:picasso:$picassoVersion"
 
+    api "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+    api "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    api "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    api "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    api "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    api "com.squareup.okhttp3:okhttp:$okhttpVersion"
+
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    api "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
+
+    //room
+    api "android.arch.persistence.room:runtime:$roomVersion"
+    kapt "android.arch.persistence.room:compiler:$roomVersion" // use kapt for Kotlin
+    api "android.arch.persistence.room:rxjava2:$roomVersion"
+
     //databinding
     kapt "com.android.databinding:compiler:$gradleVersion"
+
+    //test
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "android.arch.persistence.room:testing:$roomVersion"
+    testImplementation "org.hamcrest:hamcrest-library:$hamcrestVersion"
+
+    implementation "com.facebook.stetho:stetho:1.5.0"
 }
