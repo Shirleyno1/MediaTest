@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.shirley.videocatalogue.data.VideoItem" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        style="@style/WrapContent"
+        android:layout_width="@dimen/item_landscape_width"
+        android:layout_marginStart="@dimen/default_margin"
+        android:paddingBottom="@dimen/default_small_margin">
+
+        <ImageView
+            android:id="@+id/image"
+            style="@style/VideoImageLandscape"
+            url="@{item.images.landscape}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/Text.VideoItemTitle"
+            android:text="@{item.title}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

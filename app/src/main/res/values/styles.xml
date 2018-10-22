@@ -8,4 +8,63 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="Text">
+        <item name="android:textColor">@color/contentTextColor</item>
+    </style>
+
+    <style name="MatchParent">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+    <style name="WrapContent">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+    <style name="SectionLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Text.TitleBar" parent="MatchParent">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/detail_title_font</item>
+        <item name="android:layout_marginStart">@dimen/default_margin</item>
+    </style>
+
+    <style name="Text.CategoryTitle" parent="MatchParent">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/item_title_font</item>
+        <item name="android:layout_marginTop">@dimen/default_small_margin</item>
+        <item name="android:layout_marginStart">@dimen/default_margin</item>
+    </style>
+
+    <style name="Text.VideoItemTitle" parent="WrapContent">
+        <item name="android:textSize">@dimen/content_font</item>
+    </style>
+
+    <style name="VideoImageLandscape">
+        <item name="android:layout_height">@dimen/item_landscape_height</item>
+        <item name="android:layout_width">@dimen/item_landscape_width</item>
+    </style>
+
+    <style name="VideoImagePortrait">
+        <item name="android:layout_height">@dimen/item_portrait_height</item>
+        <item name="android:layout_width">@dimen/item_portrait_width</item>
+    </style>
+
+    <style name="CloseButton">
+        <item name="android:layout_height">@dimen/close_button_size</item>
+        <item name="android:layout_width">@dimen/close_button_size</item>
+        <item name="android:layout_margin">@dimen/default_me_margin</item>
+        <item name="android:background">@drawable/ic_close</item>
+    </style>
+
 </resources>

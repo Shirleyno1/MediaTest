@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_tiny_margin">4dp</dimen>
+    <dimen name="default_small_margin">8dp</dimen>
+    <dimen name="default_me_margin">12dp</dimen>
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="detail_title_font">25sp</dimen>
+    <dimen name="item_title_font">21sp</dimen>
+    <dimen name="content_font">15sp</dimen>
+    <dimen name="item_title_height">40dp</dimen>
+    <dimen name="item_portrait_height">175dp</dimen>
+    <dimen name="item_portrait_width">117dp</dimen>
+    <dimen name="item_landscape_height">113dp</dimen>
+    <dimen name="item_landscape_width">200dp</dimen>
+    <dimen name="close_button_size">26dp</dimen>
+
+</resources>

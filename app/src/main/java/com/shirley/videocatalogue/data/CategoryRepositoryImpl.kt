@@ -14,6 +14,8 @@ class CategoryRepositoryImpl(private val service: CategoryService, private val d
         cacheeResult?.let { return Single.just(cacheeResult) }
 
         val localResult: Single<List<Category>> = dao.getAllCategories()
+
+        //todo
         return localResult.filter{
             !it.isEmpty()
         }.switchIfEmpty(remoteResult)
