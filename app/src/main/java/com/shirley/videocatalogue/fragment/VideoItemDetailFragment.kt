@@ -10,6 +10,7 @@ import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
 import com.shirley.videocatalogue.R
 import com.shirley.videocatalogue.data.VideoItem
 import com.shirley.videocatalogue.databinding.FragmentVideoitemDetailBinding
@@ -41,9 +42,9 @@ class VideoItemDetailFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.videoItem = videoItem
-        if(portrait()){
+        if (portrait()) {
             binding.imageUrl = videoItem?.images?.portrait
-        }else{
+        } else {
             binding.imageUrl = videoItem?.images?.landscape
         }
     }
@@ -63,5 +64,9 @@ class VideoItemDetailFragment : DialogFragment() {
         val displayMetrics = DisplayMetrics()
         activity?.windowManager?.defaultDisplay?.getMetrics(displayMetrics)
         return displayMetrics.heightPixels - displayMetrics.widthPixels > 0
+    }
+
+    override fun onCreateAnimation(transit: Int, enter: Boolean, nextAnim: Int): Animation {
+        return super.onCreateAnimation(transit, enter, R.style.DialogAnimation)
     }
 }
