@@ -1,8 +1,8 @@
 package com.shirley.videocatalogue.di.framework
 
+import com.shirley.videocatalogue.di.viewmodels.ViewModelFactoryModule
+import com.shirley.videocatalogue.di.viewmodels.ViewModelModule
 import com.shirley.videocatalogue.fragment.CategoryListFragment
-import com.shirley.videocatalogue.viewmodels.viewmodel.ViewModelFactoryModule
-import com.shirley.videocatalogue.viewmodels.viewmodel.ViewModelModule
 import dagger.Component
 import javax.inject.Singleton
 

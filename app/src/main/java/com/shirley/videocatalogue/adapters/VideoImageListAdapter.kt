@@ -18,27 +18,23 @@ import com.shirley.videocatalogue.fragment.VideoItemDetailFragment
 
 class VideoImageListAdapter(val context: CategoryListFragment, var data: List<VideoItem>, var isFeature: Boolean = false) : RecyclerView.Adapter<VideoImageListAdapter.ViewHolder>() {
 
-    private val onClickListener: View.OnClickListener
-
-    init {
-        onClickListener = View.OnClickListener { v ->
-            val item = v.tag as VideoItem
-
-                val fragment = VideoItemDetailFragment().apply {
-                    arguments = Bundle().apply {
-                        putSerializable(VideoItemDetailFragment.VIDEO_ITEM_OBJECT, item)
-                    }
-                }//android:style/Theme.Holo.Light.NoActionBar
-            fragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.ThemeOverlay_AppCompat_Dialog)
-            fragment.show(context.requireFragmentManager(),"")
-
+    private val onClickListener = View.OnClickListener { v ->
+        val item = v.tag as VideoItem
+        val fragment = VideoItemDetailFragment().apply {
+            arguments = Bundle().apply {
+                putSerializable(VideoItemDetailFragment.VIDEO_ITEM_OBJECT, item)
+            }
         }
+        fragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.ThemeOverlay_AppCompat_Dialog)
+        fragment.show(context.requireFragmentManager(), "")
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var layout = R.layout.item_portrait
-        if (isFeature) {
-            layout = R.layout.item_landscape
-        }
+        val layout = if (isFeature)
+            R.layout.item_landscape
+        else
+            R.layout.item_portrait
+
         val itemView = LayoutInflater.from(parent.context).inflate(layout, FrameLayout(parent.context), false)
         return ViewHolder(itemView)
     }
@@ -53,16 +49,14 @@ class VideoImageListAdapter(val context: CategoryListFragment, var data: List<Vi
         with(data.get(position)) {
             if (isFeature) {
                 (binding as ItemLandscapeBinding).item = this
-            }
-            else {
+            } else {
                 (binding as ItemPortraitBinding).item = this
             }
-            with(holder.itemView) {
-                tag = data.get(position)
-                setOnClickListener(onClickListener)
-            }
         }
-
+        with(holder.itemView) {
+            tag = data.get(position)
+            setOnClickListener(onClickListener)
+        }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

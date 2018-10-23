@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.shirley.videocatalogue.data.VideoItem" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout style="@style/MatchParent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list"
+            style="@style/MatchParent"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,5 +1,6 @@
 package com.shirley.videocatalogue.fragment
 
+import android.databinding.DataBindingUtil
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -11,45 +12,40 @@ import android.view.View
 import android.view.ViewGroup
 import com.shirley.videocatalogue.R
 import com.shirley.videocatalogue.data.VideoItem
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_videoitem_detail.view.*
+import com.shirley.videocatalogue.databinding.FragmentVideoitemDetailBinding
 
 class VideoItemDetailFragment : DialogFragment() {
 
-    private var item: VideoItem? = null
+    private var videoItem: VideoItem? = null
+    lateinit var binding: FragmentVideoitemDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
             if (it.containsKey(VIDEO_ITEM_OBJECT)) {
-                item = it.getSerializable(VIDEO_ITEM_OBJECT) as VideoItem?
+                videoItem = it.getSerializable(VIDEO_ITEM_OBJECT) as VideoItem?
             }
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val rootView = inflater.inflate(R.layout.fragment_videoitem_detail, container, false)
-        item?.let {
-            rootView.title.text = it.title
-            rootView.year.text = it.year
-            rootView.description.text = it.description
-            with(if (portrait()) it.images.portrait else it.images.landscape) {
-                this.let {
-                    Picasso.get()
-                            .load(it)
-                            .fit()
-                            .placeholder(R.drawable.image_default)
-                            .into(rootView.image)
-                }
-            }
-        }
-        rootView.close.setOnClickListener{
+        binding = DataBindingUtil.inflate<FragmentVideoitemDetailBinding>(inflater, R.layout.fragment_videoitem_detail, container, false)
+        binding.close.setOnClickListener {
             dismiss()
         }
+        return binding.root
+    }
 
-        return rootView
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.videoItem = videoItem
+        if(portrait()){
+            binding.imageUrl = videoItem?.images?.portrait
+        }else{
+            binding.imageUrl = videoItem?.images?.landscape
+        }
     }
 
     @CallSuper

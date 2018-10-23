@@ -1,7 +1,7 @@
-package com.shirley.videocatalogue.viewmodels.viewmodel
+package com.shirley.videocatalogue.di.viewmodels
 
 import android.arch.lifecycle.ViewModel
-import com.shirley.videocatalogue.ShiftViewModel
+import com.shirley.videocatalogue.CategoryViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -11,7 +11,7 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(ShiftViewModel::class)
-    abstract fun bindShiftViewModel(shiftViewModel: ShiftViewModel): ViewModel
+    @ViewModelKey(CategoryViewModel::class)
+    abstract fun bindShiftViewModel(shiftViewModel: CategoryViewModel): ViewModel
 
 }

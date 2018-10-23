@@ -31,8 +31,5 @@ class CategoryListAdapter(val context: CategoryListFragment, var data: List<Cate
         }
     }
 
-
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-    }
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {}
 }

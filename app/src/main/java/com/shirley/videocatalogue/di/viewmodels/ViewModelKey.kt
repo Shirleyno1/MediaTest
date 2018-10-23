@@ -1,4 +1,4 @@
-package com.shirley.videocatalogue.viewmodels.viewmodel
+package com.shirley.videocatalogue.di.viewmodels
 
 import android.arch.lifecycle.ViewModel
 import dagger.MapKey
