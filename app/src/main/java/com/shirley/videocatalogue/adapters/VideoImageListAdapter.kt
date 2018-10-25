@@ -25,7 +25,7 @@ class VideoImageListAdapter(val context: CategoryListFragment, var data: List<Vi
                 putSerializable(VideoItemDetailFragment.VIDEO_ITEM_OBJECT, item)
             }
         }
-        fragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.ThemeOverlay_AppCompat_Dialog)
+        fragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.MyTheme)
         fragment.show(context.requireFragmentManager(), "")
     }
 

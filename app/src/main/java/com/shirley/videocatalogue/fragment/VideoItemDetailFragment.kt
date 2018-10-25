@@ -9,8 +9,9 @@ import android.support.v4.app.DialogFragment
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 import android.view.ViewGroup
-import android.view.animation.Animation
+import android.view.WindowManager
 import com.shirley.videocatalogue.R
 import com.shirley.videocatalogue.data.VideoItem
 import com.shirley.videocatalogue.databinding.FragmentVideoitemDetailBinding
@@ -54,19 +55,17 @@ class VideoItemDetailFragment : DialogFragment() {
         super.onStart()
         dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
+        dialog.window?.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        dialog.window?.decorView?.systemUiVisibility = SYSTEM_UI_FLAG_LAYOUT_STABLE//solves issue with statusbar
     }
 
     companion object {
         const val VIDEO_ITEM_OBJECT = "video_item_object"
     }
 
-    fun portrait(): Boolean {
+    private fun portrait(): Boolean {
         val displayMetrics = DisplayMetrics()
         activity?.windowManager?.defaultDisplay?.getMetrics(displayMetrics)
         return displayMetrics.heightPixels - displayMetrics.widthPixels > 0
-    }
-
-    override fun onCreateAnimation(transit: Int, enter: Boolean, nextAnim: Int): Animation {
-        return super.onCreateAnimation(transit, enter, R.style.DialogAnimation)
     }
 }
